@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let age=9;
+        function checkAge(age) {
+        if (age > 18) {
+            return true;
+        } else {
+            return confirm('Did parents allow you?');
+        }
+        }   
+        
+        function checkAgeQues(age){
+            return (age > 18)? true: confirm('Did parents allow you?');
+        }
+
+        function checkAgeOr(age){
+            return (age>18) || confirm('Did parents allow you?');
+        }
+
+        checkAge(age);
+        checkAgeQues(age);
+        checkAgeOr(age);
+    </script>
+</body>
+</html>
