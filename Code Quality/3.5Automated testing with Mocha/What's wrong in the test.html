@@ -1,16 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <script>
-
-    </script>
-</body>
-</html> -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,8 +20,18 @@
 
   <script>
     function pow(x, n) {
-      /* function code is to be written, empty now */
+      if (n < 0) return NaN;
+      if (Math.round(n) != n) return NaN;
+
+      let result = 1;
+
+      for (let i = 0; i < n; i++) {
+        result *= x;
+      }
+
+      return result;
     }
+        
   </script>
 
   <!-- the script with tests (describe, it...) -->
