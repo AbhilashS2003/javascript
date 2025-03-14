@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let styles = ['Jazz',"Blues"];
+        alert(styles);
+
+        styles.push("Rock-n-Roll");
+        alert(styles);
+
+        function midArr(arr,str) {
+            let mid = Math.floor( arr.length / 2 );
+            arr[mid] = str;
+            return( arr );
+        }
+        styles = midArr(styles,"Classics");
+        alert(styles);
+
+        alert( styles.shift() );
+        alert(styles);
+    
+        styles.unshift("Rap","Reggae");
+        alert(styles);
+    </script>
+</body>
+</html>

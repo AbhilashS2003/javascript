@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function sumInput() {
+            let arr = [];
+            let flag = 1;
+            while(true) {
+                let a = +prompt("Enter a number");
+                if( !isFinite(a) || a == '' || a == null ) break;
+                arr.push(a);
+            }
+
+            let sum = 0;
+
+            for( let i of arr){
+                sum += i;
+            }
+
+            return sum;
+        }
+        alert(sumInput());
+    </script>
+</body>
+</html>
