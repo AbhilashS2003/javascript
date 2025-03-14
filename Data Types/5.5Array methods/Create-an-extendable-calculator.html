@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Calculator() {
+            this.calc = {
+                '+' :  (a,b) => a+b,
+            };
+
+            this.calculate = function(str) {
+                let arr = str.split(' '),
+                op = arr[1],
+                a = +arr[0],
+                b = +arr[2];
+
+                if( !this.calc[op] || isNaN(a) || isNaN(b) ){
+                    return NaN;
+                }
+
+                return this.calc[op](a,b);
+
+            };
+
+            this.addMethod = function(oper,func) {
+                this.calc[oper] = func;
+            };
+        }
+
+        let powerCalc = new Calculator;
+
+        powerCalc.addMethod("*", (a, b) => a * b);
+        powerCalc.addMethod("/", (a, b) => a / b);
+        powerCalc.addMethod("**", (a, b) => a ** b);
+
+        let result = powerCalc.calculate("2 ** 3");
+        alert( result ); // 8
+        let result2= powerCalc.calculate("2 * 3");
+        alert( result2 );
+    </script>
+</body>
+</html>
