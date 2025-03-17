@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function getLastDayOfMonth(year, month) {
+            let dateCopy = new Date(year,month+1);
+            dateCopy.setDate(dateCopy.getDate() -1);
+            return dateCopy.getDate();
+        }
+
+        alert( getLastDayOfMonth(2012, 1) );
+    </script>
+</body>
+</html>
