@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function sumTo(n) {
+            if( n == 1 ) return 1;
+            return n + sumTo(n-1);
+        }
+
+        alert( sumTo(1) )//1
+        alert( sumTo(2) )//3
+        alert( sumTo(3) )//6
+        alert( sumTo(4) )//10
+        alert( sumTo(100) )//5050
+
+        function sumToFor(n) {
+            let sum = 0;
+            for(let i = 1; i<=n; i++) {
+                sum += i;
+            }
+            return sum;
+        }
+
+        alert( sumToFor(1) )//1
+        alert( sumToFor(2) )//3
+        alert( sumToFor(3) )//6
+        alert( sumToFor(4) )//10
+        alert( sumToFor(100) )//5050
+
+        function sumToArith(n) {
+            return  Math.ceil( n * ( n + 1 ) / 2 ); 
+        }
+
+        alert( sumToArith(1) )//1
+        alert( sumToArith(2) )//3
+        alert( sumToArith(3) )//6
+        alert( sumToArith(4) )//10
+        alert( susumToArithmToFor(100) )//5050
+
+    </script>
+</body>
+</html>

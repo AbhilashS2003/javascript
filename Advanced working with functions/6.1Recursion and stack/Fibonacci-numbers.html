@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function fib(n) {
+            return n <= 1 ? n: fib( n - 1 ) + fib( n - 2 );
+        }
+
+        alert(fib(3)); // 2
+        alert(fib(7)); // 13
+        alert(fib(77)); // 5527939700884757
+    </script>
+</body>
+</html>
