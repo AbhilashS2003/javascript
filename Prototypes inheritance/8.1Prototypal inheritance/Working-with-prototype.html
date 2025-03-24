@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let animal = {
+            jumps: null
+        };
+        let rabbit = {
+            __proto__: animal,
+            jumps: true
+        };
+
+        alert( rabbit.jumps ); // true
+
+        delete rabbit.jumps;
+
+        alert( rabbit.jumps ); // null
+
+        delete animal.jumps;
+
+        alert( rabbit.jumps ); // undefined
+    </script>
+</body>
+</html>
