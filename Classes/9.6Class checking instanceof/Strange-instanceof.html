@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function A() {}
+        function B() {}
+
+        A.prototype = B.prototype = {};
+
+        let a = new A();
+
+        alert( a instanceof B ); // true
+    </script>
+</body>
+</html>
