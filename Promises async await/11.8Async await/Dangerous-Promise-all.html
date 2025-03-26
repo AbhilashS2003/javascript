@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function allOrAggregateError(promises) {
+            return Promise.allSettled(promises).then(results => {
+            const errors = [];
+            const values = [];
+
+            results.forEach((res, i) => {
+            if (res.status === 'fulfilled') {
+                values[i] = res.value;
+            } else {
+                errors.push(res.reason);
+            }
+            });
+
+            if (errors.length > 0) {
+            throw new AggregateError(errors, 'One or more promises failed');
+            }
+
+            return values;
+        });
+        }
+
+        let promise1 = Promise.resolve('Result 1');
+        let promise2 = Promise.reject(new Error('Failure in promise2'));
+        let promise3 = Promise.resolve('Result 3');
+
+        allOrAggregateError([promise1, promise2, promise3]);
+    </script>
+</body>
+</html>
