@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ol id="elem">
+        <li>Hello</li>
+        <li>World</li>
+    </ol>
+    
+    <script>
+        function clear(elem) { 
+            let child = elem.firstChild;
+            while (child) {
+                let next = child.nextSibling; // save the next node
+                elem.removeChild(child); // remove the current node
+                child = next; // move to the next node
+            }
+            
+        }
+    
+        clear(elem); // clears the list
+    </script>
+</body>
+</html>
