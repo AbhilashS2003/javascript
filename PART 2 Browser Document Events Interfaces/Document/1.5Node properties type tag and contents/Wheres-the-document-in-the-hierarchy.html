@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+            alert(document); //[object HTMLDocument]
+            alert(HTMLDocument.prototype.constructor === HTMLDocument); // true
+
+            alert(HTMLDocument.prototype.constructor.name); // HTMLDocument
+            alert(HTMLDocument.prototype.__proto__.constructor.name); // Document
+            alert(HTMLDocument.prototype.__proto__.__proto__.constructor.name); // Node
+    </script>
+    alert(document);
+</body>
+</html>
