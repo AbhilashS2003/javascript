@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function showNotification({top = 0, right = 0, className, html}) {
+            let notification = document.createElement('div');
+            notification.className = 'notification';
+
+            if(className) notification.classList.add(className);
+
+            notification.style.top = top + 'px';
+            notification.style.right = right + 'px';
+
+            notification.innerHTML = html;
+            document.body.append(notification);
+            setTimeout(() => notification.remove(), 1500);
+        }
+        showNotification({
+            top: 10, // 10px from the top of the window (by default 0px)
+            right: 10, // 10px from the right edge of the window (by default 0px)
+            html: "Hello!", // the HTML of notification
+            className: "welcome" // an additional class for the div (optional)
+        });
+    </script>
+</body>
+</html>
