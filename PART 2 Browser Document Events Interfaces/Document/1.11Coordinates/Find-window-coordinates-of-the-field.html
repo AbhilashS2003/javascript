@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let cords = elem.getBoundingClientRect();
+        let upperLeft = [cords.left, cords.top];
+        let lowerRight = [cords.right, cords.bottom];
+        let upperLeftInside = [cords.left + elem.clientLeft, cords.top + elem.clientTop];
+        let lowerRightInside = [cords.left + elem.clientLeft + elem+clientWidth, cords.top + elem.clientTop + elem.clientHeight];
+    </script>
+</body>
+</html>
