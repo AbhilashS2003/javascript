@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #field {
+            width: 200px;
+            height: 150px;
+            position: relative;
+        }
+
+        #ball {
+            position: absolute;
+            left: 0; /* relative to the closest positioned ancestor (field) */
+            top: 0;
+            transition: 1s all; /* CSS animation for left/top makes the ball fly */
+        }
+    </style>
+</head>
+<body>
+    
+  Click on a field to move the ball there.
+  <br>
+
+
+  <div id="field">
+    <img src="https://en.js.cx/clipart/ball.svg" id="ball"> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+  </div>
+
+  <script>
+    field.onclick = function(event) {
+        let fieldCoords = this.getBoundingClientRect(); 
+        let ballCoords = {
+            top : event.clientY - fieldCoords.top - field.clientTop - ball.clientHeight / 2,
+            left : event.clientX - fieldCoords.left - field.clientLeft - ball.clientWidth / 2
+        };
+        
+        if(ballCoords.top < 0) ballCoords.top = 0;
+        if(ballCoords.left < 0) ballCoords.left = 0;
+        if(ballCoords.top + ball.clientHeight > field.clientHeight) ballCoords.top = field.clientHeight - ball.clientHeight;
+        if(ballCoords.left + ball.clientWidth > field.clientWidth) ballCoords.left = field.clientWidth - ball.clientWidth;
+
+        ball.style.left = ballCoords.left + 'px';
+        ball.style.top = ballCoords.top + 'px';
+
+    }
+  </script>
+</body>
+</html>

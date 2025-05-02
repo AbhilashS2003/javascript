@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" id="button" value="CLICK ME">
+    <script>
+        button.addEventListener("click", () => alert("1")); //this will run FIRST
+
+        button.removeEventListener("click", () => alert("1"));
+
+        button.onclick = () => alert(2); //this will run next
+    </script>
+</body>
+</html>
