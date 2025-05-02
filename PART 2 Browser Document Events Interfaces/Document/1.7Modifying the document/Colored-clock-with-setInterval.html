@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hour {
+            color: red;
+        }
+        .min {
+            color: green;
+        }
+        .sec {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="clock">
+        <span class="hour">hh</span>:<span class="min">mm</span>:<span class="sec">ss</span>
+    </div>
+    <script>
+        let timerid;
+        function update(){
+            let clock = document.getElementById('clock');
+            let date = new Date();
+
+            let hour = date.getHours();
+            if (hour < 10) hour = '0' + hour;
+            clock.children[0].innerHTML = hour;
+
+            let min = date.getMinutes();
+            if (min < 10) min = '0' + min;
+            clock.children[1].innerHTML = min;
+
+            let sec = date.getSeconds();
+            if (sec < 10) sec = '0' + sec;
+            clock.children[2].innerHTML = sec;
+        }
+
+        function startClock() {
+            if(!timerid){
+                timerid = setInterval(update, 1000);
+            }
+            update();
+        }
+
+        function stopClock() {
+            clearInterval(timerid);
+            timerid = null;
+        }
+
+    </script>
+
+    <input type="button" value="Start" onclick="startClock()">
+    <input type="button" value="Stop" onclick="stopClock()">
+</body>
+</html>
