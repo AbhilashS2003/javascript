@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+</head>
+<body>
+
+  <ul class="tree" id="tree">
+    <li>Animals
+      <ul>
+        <li>Mammals
+          <ul>
+            <li>Cows</li>
+            <li>Donkeys</li>
+            <li>Dogs</li>
+            <li>Tigers</li>
+          </ul>
+        </li>
+        <li>Other
+          <ul>
+            <li>Snakes</li>
+            <li>Birds</li>
+            <li>Lizards</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Fishes
+      <ul>
+        <li>Aquarium
+          <ul>
+            <li>Guppy</li>
+            <li>Angelfish</li>
+          </ul>
+        </li>
+        <li>Sea
+          <ul>
+            <li>Sea trout</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+
+  <script>
+    // document.getElementById('tree').onclick = function(event) {
+    //     let target = event.target.closest('li');
+    //     if (!target) return; 
+    //     let children = target.querySelector('ul');
+    //     if (!children) return;
+    //     children.hidden = !children.hidden;
+    // }
+
+    for(let li of document.querySelectorAll('li')) {
+        let span = document.createElement('span');
+        li.prepend(span);
+        span.append(span.nextSibling);
+    }
+    tree.onclick = function(event) {
+        if (event.target.tagName != 'SPAN') return;
+        let children = event.target.parentNode.querySelector('ul');
+        if (!children) return;
+        children.hidden = !children.hidden;
+    }
+  </script>
+</body>
+</html>
