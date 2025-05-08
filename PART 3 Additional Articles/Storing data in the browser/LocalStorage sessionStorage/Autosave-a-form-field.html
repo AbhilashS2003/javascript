@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <textarea style="width:200px; height: 60px;" id="area"></textarea>
+    <button onclick="localStorage.removeItem('area'); area.value=''" id="clear">Clear</button>
+    <script>
+        area.vlue = localStorage.getItem('area');
+        area.oninput = function() {
+            localStorage.setItem('area', area.value);
+        }
+    </script>
+</body>
+</html>
