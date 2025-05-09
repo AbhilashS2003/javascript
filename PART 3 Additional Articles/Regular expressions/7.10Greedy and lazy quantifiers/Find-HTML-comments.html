@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <script>
+
+            let regexp = /<!--.*?-->/gs;
+
+            let str = `... <!-- My -- comment test --> ..  <!----> ..`;
+
+            alert(str.match(regexp));
+
+        </script>
+    </body>
+</html>
