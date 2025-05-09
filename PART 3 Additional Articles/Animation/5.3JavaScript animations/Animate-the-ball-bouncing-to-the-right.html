@@ -3,7 +3,18 @@
 
 <head>
   <script src="https://en.js.cx/libs/animate.js"></script>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    #field {
+      height: 200px;
+      border-bottom: 3px black groove;
+      position: relative;
+    }
+
+    #ball {
+      position: absolute;
+      cursor: pointer;
+    }
+  </style>
 </head>
 
 <body>
@@ -27,17 +38,32 @@
         }
     }
 
-    let height = field.clientHeight - ball.clientHeight;
-    let left =100;
+    function quad(timeFraction) {
+      return Math.pow(timeFraction, 2);
+    }
 
-    animate({
-        duration: 2000,
-        tmining: makeEaseOut(bounce),
-        draw(progress) {
-            ball.style.top = height * progress + 'px';
-            ball.style.left = left * progress + 'px';
-        }
-    })
+    ball.onclick = function() {
+      let height = field.clientHeight - ball.clientHeight;
+      let left =100;
+
+      animate({
+          duration: 2000,
+          timing: makeEaseOut(bounce),
+          draw: function(progress) {
+              ball.style.top = height * progress + 'px';
+          }
+      });
+
+      animate({
+          duration: 2000,
+          timing: makeEaseOut(quad),
+          draw: function(progress) {
+              ball.style.left = left * progress + 'px';
+          }
+      });
+
+    }
+
   </script>
 </body>
 
