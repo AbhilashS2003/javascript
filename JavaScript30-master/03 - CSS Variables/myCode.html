@@ -7,7 +7,6 @@
 </head>
 <body>
   <h2>Update CSS Variables with <span class='hl'>JS</span></h2>
-
   <div class="controls">
     <label for="spacing">Spacing:</label>
     <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
@@ -35,7 +34,7 @@
         filter: blur(var(--blur));
     }
 
-
+    
     .hl {
         color: var(--base);
     }
@@ -62,7 +61,7 @@
   </style>
 
   <script>
-
+    
     const inputs = document.querySelectorAll('.controls input');
 
     function calc() {
@@ -72,6 +71,7 @@
     }
     inputs.forEach(input => input.addEventListener('change', calc));
     inputs.forEach(input => input.addEventListener('mousemove', calc));
+
 
 
   </script>
