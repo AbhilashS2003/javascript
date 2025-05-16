@@ -65,14 +65,16 @@
     if( !audio ) return;
     audio.currentTime = 0;
     audio.play();
+    key.classList.remove('playing');
+    void key.offsetWidth;
     key.classList.add('playing');
   }
 
   function removeTransition(e) {
-    if ( e.propertyName != "transform" ) return;
+    // if ( e.propertyName != "transform" ) return;
     this.classList.remove('playing');
   }
-  let keys = document.querySelectorAll('.key');
+  let keys = document.querySelectorAll(".key");
   keys.forEach(key => key.addEventListener('transitionend', removeTransition));
   window.addEventListener('keydown',playSound);
 </script>
