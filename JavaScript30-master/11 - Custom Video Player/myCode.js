@@ -1,3 +1,5 @@
+// const { Console } = require("console");
+
 const player = document.querySelector('.player'); 
 const video = player.querySelector('.viewer');
 const progress = player.querySelector('.progress');
@@ -22,7 +24,7 @@ function skip() {
 }
 
 function handleRangeUpdate() {
-    video[this.name] = this.value;
+      video[this.name] = this.value;
 }
 
 function handleProgress() {
@@ -41,7 +43,7 @@ video.addEventListener('pause', updateButton);
 video.addEventListener('timeupdate', handleProgress); 
 toggle.addEventListener('click', togglePlay);
 document.addEventListener('keydown', function(event) {
-  if (event.code === 'Space') {
+  if (event.code === 'value') {
     togglePlay();
     updateButton();
   }
@@ -49,6 +51,7 @@ document.addEventListener('keydown', function(event) {
 skipButtons.forEach(button => button.addEventListener('click', skip));
 ranges.forEach(range => range.addEventListener('change', handleRangeUpdate));
 ranges.forEach(range => range.addEventListener('mousemove', handleRangeUpdate));
+
 
 let mousedown = false;
 progress.addEventListener('click', scrub);
