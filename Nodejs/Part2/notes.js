@@ -1,3 +1,4 @@
+const { timeStamp } = require('console');
 const fs = require('fs');
 const path = require('path');
 
@@ -26,7 +27,8 @@ function addNote(text){
     }
     const newNode = {
             id : tasks.length > 0 ? tasks[tasks.length - 1].id + 1 : 1,
-            text
+            text,
+            timeStamp : new Date().toISOString()
     };
     tasks.push(newNode);
     fs.writeFileSync(filepath, JSON.stringify(tasks), 'utf-8');
@@ -35,9 +37,14 @@ function addNote(text){
 
 function deleteNode(id) {
     let idNow = parseInt(id);
-    tasks = tasks.filter(task => task.id !== idNow);
-    fs.writeFileSync(filepath, JSON.stringify(tasks), 'utf-8');
-    console.log(`task deleted with id: ${idNow}`);
+    let delTask = tasks.find(task => task.id === idNow);
+    if(delTask) {
+        tasks = tasks.filter(task => task.id !== idNow);
+        fs.writeFileSync(filepath, JSON.stringify(tasks), 'utf-8');
+        console.log(`task deleted with id: ${idNow}`);
+    } else {
+        console.log('No task to delete with given id');
+    }
 } 
 
 
@@ -50,6 +57,7 @@ function editNote(id, newText) {
         console.log(`task modified with id: ${id1}`);
         return task;
     } else {
+        console.log('No task found');
         return false;
     }
 } 
