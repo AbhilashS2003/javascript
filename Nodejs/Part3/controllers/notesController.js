@@ -1,4 +1,4 @@
-const {readNotes, writeNotes} = require('../utils/fileStore');
+const {getNotes, writeNotes} = require('../utils/fileStore');
 
 exports.getNotes = (req, res) => {
     const notes = getNotes();
@@ -12,7 +12,7 @@ exports.addNote = (req, res) => {
             process.exit(1);
     }
     const newNote = {
-            id : tasks.length > 0 ? tasks[tasks.length - 1].id + 1 : 1,
+            id : notes.length > 0 ? notes[notes.length - 1].id + 1 : 1,
             text: req.body.text,
             timeStamp : new Date().toISOString()
     };
@@ -23,10 +23,10 @@ exports.addNote = (req, res) => {
 };
 
 exports.editNote = (req, res) => {
-    const id = req.params;
+    const id = req.params.id;
     const {text} = req.body;
     const notes = getNotes();
-    let note = notes.find(note => note.id == id);
+    let note = notes.find(note => note.id == parseInt(id));
     if(!note) {
         res.status(404).json({error: 'note notfound'});
     }
@@ -36,13 +36,13 @@ exports.editNote = (req, res) => {
 };
 
 exports.deleteNote = (req, res) => {
-    const id = req.params;
-    const notes = getNotes();
-    let note = notes.find(note => note.id == id);
+    const delId = req.params.id;
+    let notesDel = getNotes();
+    let note = notesDel.find(note => note.id == delId);
     if(!note) {
         res.status(404).json({error: 'note notfound'});
     }
-    notes = notes.filter(note => note.id != id);
-    writeNotes(notes);
+    notesDel = notesDel.filter(note => note.id != delId);
+    writeNotes(notesDel);
     res.json(`deleted node: ${note}`);
 };

@@ -75,13 +75,13 @@ const router = express.Router();
 const {
     getNotes,
     addNote,
-    deleteNode,
+    deleteNote,
     editNote
 } = require('../controllers/notesController.js');
 
 router.get('/', getNotes);
 router.post('/', addNote);
-router.put('/', editNote);
-router.delete('/', deleteNode);
+router.put('/:id', editNote);
+router.delete('/:id', deleteNote);
 
 module.exports = router;

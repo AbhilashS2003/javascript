@@ -1,6 +1,4 @@
-// const { error } = require('console');
 const fs = require('fs');
-// const { json, text } = require('stream/consumers');
 
 const filepath = './notes.json';
 let tasks = []
