@@ -1,12 +1,35 @@
 const store = require('../store/notesStore');
 
- exports.getNotes = (req, res) => {
-    const {search} = req.query;
-    if(search) {
+// exports.getNotes = (req, res) => {
+//     const {search} = req.query;
+//     const tag = req.query.tag;
+//     if(tag) {
+//         return res.json(store.getNoteByTag(tag));
+//     }
+//     if(search) {
+//         return res.json(store.filterNotesByText(search));
+//     }
+//     res.json(store.getAllNotes());
+// };
+
+exports.getNotes = (req, res) => {
+    const { search, tag, from, to } = req.query;
+
+    if (tag) {
+        return res.json(store.getNoteByTag(tag));
+    }
+
+    if (search) {
         return res.json(store.filterNotesByText(search));
     }
+
+    if (from || to) {
+        return res.json(store.getNotesByDate(from, to));
+    }
+
     res.json(store.getAllNotes());
 };
+
 
 exports.addNote = (req, res) => {
     const newNote = store.addNote(req.body.text);

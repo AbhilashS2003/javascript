@@ -1,6 +1,11 @@
 const {getNotes, writeNotes} = require('../utils/fileStore');
 
 let notes = getNotes();
+let noteIndexById = {};
+
+notes.forEach(note => {
+  noteIndexById[note.id] = note;
+});
 
 function getAllNotes() {
     return notes;
@@ -14,7 +19,10 @@ function addNote(text){
     const note = {
             id : notes.length > 0 ? notes[notes.length - 1].id + 1 : 1,
             text,
-            timeStamp : new Date().toISOString()
+            // timeStamp : new Date().toISOString(),
+            tags : [],
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString()
     };
     notes.push(note);
     persist();
@@ -22,7 +30,8 @@ function addNote(text){
 }
 
 function updateNote(id, newText){
-    let note = notes.find(note => note.id == id);
+    // let note = notes.find(note => note.id == id);
+    const note = noteIndexById[id];
     if(!note) return null
     note.text = newText;
     note.updatedAt = new Date().toISOString();
@@ -42,6 +51,17 @@ function filterNotesByText(keyword) {
     return notes.filter(n => n.text.includes(keyword));
 }
 
+function getNoteByTag(tag) {
+    return notes.filter(n => n.tags.includes(tag));
+}
+
+function getNotesByDate(from, to) {
+    return notes.filter(n => {
+        const created = new Date(n.createdAt);
+        return (!from || created >= new Date(from)) &&
+               (!to || created <= new Date(to));
+    });
+}
 function persist() {
     writeNotes(notes);
 }
@@ -56,5 +76,7 @@ module.exports = {
     addNote,
     updateNote,
     deleteNote,
-    filterNotesByText
+    filterNotesByText,
+    getNoteByTag,
+    getNotesByDate
 };
