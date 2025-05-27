@@ -29,13 +29,11 @@ exports.getNotes = (req, res) => {
 
     let notes;
     try {
-        notes = store.getAllNotes(); // get notes synchronously
+        notes = store.getAllNotes(); 
     } catch (err) {
         return res.status(500).json({ error: 'Failed to fetch notes' });
     }
 
-    // store.getAllNotes((err, notes) => {
-    //     if(err) return res.status(500).json({error : 'failed to fetch notes'});
     let filtered = notes;
     if(search) {
         filtered = filtered.filter(note => note.text.toLowerCase().includes(search.toLowerCase()));
