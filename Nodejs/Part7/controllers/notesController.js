@@ -1,37 +1,5 @@
 const store = require('../store/notesDbStore');
 
-// exports.getNotes = (req, res) => {
-//     const {
-//         search = '', 
-//         tag,
-//         from,
-//         to,
-//         page = 1, 
-//         limit = 10, 
-//         sortBy = 'createdAt', 
-//         order = 'desc'
-//     } = req.query;
-    
-//     const handler = (err, notes) => {
-//         if(err) return res.status(500).json({error: 'db error'});
-//         res.json(notes);
-//     };
-
-//     if(search) {
-//         store.filterNotesByText(search, handler);
-//     }
-
-//     if (tag) {
-//         store.getNoteByTag(tag, handler);    
-//     }
-
-//     if (from || to) {
-//         store.getNotesByDate(from, to, handler);
-//     }
-
-//     store.getAllNotes(handler);
-// };
-
 exports.getNotes = (req, res) => {
     const {
         search = '', 
@@ -84,5 +52,4 @@ exports.deleteNote = (req, res) => {
     };
 
     store.deleteNote(req.params.id, handler);
-    res.status(204).end();
 }
