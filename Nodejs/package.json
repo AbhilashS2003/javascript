@@ -4,13 +4,14 @@
   "main": "index.js",
   "scripts": {
     "test": "NODE_ENV=test jest",
-    "start": "nodemon Part8/server.js"
+    "start": "nodemon Part9/server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "express": "^5.1.0",
     "morgan": "^1.10.0",
     "sqlite3": "^5.1.7",
