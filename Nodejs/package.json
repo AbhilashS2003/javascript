@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "NODE_ENV=test jest",
-    "start": "nodemon Part7/server.js"
+    "start": "nodemon Part8/server.js"
   },
   "keywords": [],
   "author": "",
