@@ -3,11 +3,13 @@ const app = express();
 const router = require('./routes/notes');
 const morgan = require('morgan'); //package for logging
 const { error } = require('console');
+const authRouter = require('./routes/auth');
 
 app.use(express.json());
 app.use(logger);
 app.use(morgan('dev'));
 
+app.use('/auth', authRouter);
 app.use('/notes', router);
 
 function logger(req, res, next) {
